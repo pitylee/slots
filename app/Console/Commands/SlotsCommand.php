@@ -43,16 +43,14 @@ class SlotsCommand extends Command
     {
         $bet = Bet::factory()->definition();
         $bet['amount'] = 100;
-        $this->print('#1 Bet: ' . json_encode($bet, true));
-
-        $this->doFunStuff($bet);
+        $this->print(PHP_EOL . '#1 Bet: ' . json_encode($bet, true));
 
         $slotsRandom = (new Slots(5, 3))->randomize(15);
-        $this->print('#2 Slots of 5 columns and 3 rows randomized:');
+        $this->print(PHP_EOL . '#2 Slots of 5 columns and 3 rows randomized:');
         $this->printSlot($slotsRandom);
 
         $slotsPredefined = (new Slots(5, 3))->generate(['J', 'J', 'J', 'Q', 'K', 'cat', 'J', 'Q', 'monkey', 'bird', 'bird', 'bird', 'J', 'Q', 'A']);
-        $this->print('#3 Slots for 15 predefined values:');
+        $this->print(PHP_EOL . '#3 Slots for 15 predefined values:');
         $this->printSlot($slotsPredefined);
 
         $slots = new Slots(5, 5);
@@ -65,17 +63,17 @@ class SlotsCommand extends Command
             'bird', 'J', 'J', 'monkey', 'A',
         ];
         $slotsForPayout = $slots->generate($board);
-        $this->print('#4 Slots for payout double win:');
+        $this->print(PHP_EOL . '#4 Slots for payout double win:');
         $this->printSlot($slotsForPayout);
 
-        $this->print('#5 Payout the amount won:');
+        $this->print(PHP_EOL . '#5 Payout the amount won:');
         if ($win = $slots->isWin() && $wins = $slots->wins()) {
             $this->printWin(true);
             $winAmount = (new PayoutEvent($bet, $wins))->amount;
             $this->print($bet['client'] . ' got a payout of ' . $winAmount . ' ' . $bet['currency']);
         }
 
-        $this->print('#6 Json version:');
+        $this->print(PHP_EOL . '#6 Json version:');
         $this->print(json_encode([
             'board' => $board,
             'paylines' => array_map(function($win) {
