@@ -2,28 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f078487b-c914-404d-be46-c8ec78296df1" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Classes/Currencies.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Classes/SlotSymbols.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Classes/Slots.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Console/Commands/SlotsCommand.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Currencies/EUR.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Currencies/USD.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Events/PayoutEvent.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Bet.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Currency.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/SlotSymbols/Ace.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/SlotSymbols/Bird.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/SlotSymbols/Cat.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/SlotSymbols/Dog.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/SlotSymbols/Jack.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/SlotSymbols/King.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/SlotSymbols/Monkey.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/SlotSymbols/Nine.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/SlotSymbols/Queen.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/SlotSymbols/Ten.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/factories/BetFactory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Console/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Console/Kernel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Classes/Slots.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Classes/Slots.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -196,7 +175,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1632661460706</updated>
-      <workItem from="1632661464283" duration="20221000" />
+      <workItem from="1632661464283" duration="20386000" />
     </task>
     <servers />
   </component>

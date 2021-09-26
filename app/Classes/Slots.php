@@ -97,10 +97,6 @@ class Slots
 
     public function get(): array
     {
-        /*return array_filter(array_combine($this->slots, array_map(function ($slot) {
-            return $this->slotSymbols[$slot] ?? null;
-        }, $this->slots)));*/
-
         return $this->slots;
     }
 
