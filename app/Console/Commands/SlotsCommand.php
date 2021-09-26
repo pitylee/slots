@@ -7,6 +7,7 @@ use Exception;
 use Illuminate\Console\Command;
 use App\Classes\Slots;
 use App\Events\PayoutEvent;
+use App\Traits\MyOwnFun;
 
 /**
  * Class SlotsCommand
@@ -16,6 +17,8 @@ use App\Events\PayoutEvent;
  */
 class SlotsCommand extends Command
 {
+    use MyOwnFun;
+
     /**
      * The console command name.
      *
@@ -41,6 +44,8 @@ class SlotsCommand extends Command
         $bet = Bet::factory()->definition();
         $bet['amount'] = 100;
         $this->print('#1 Bet: ' . json_encode($bet, true));
+
+        $this->doFunStuff($bet);
 
         $slotsRandom = (new Slots(5, 3))->randomize(15);
         $this->print('#2 Slots of 5 columns and 3 rows randomized:');
@@ -81,7 +86,6 @@ class SlotsCommand extends Command
             'bet_amount' => $bet['amount'],
             'total_win' => $winAmount,
         ], JSON_PRETTY_PRINT));
-
     }
 
     private function print (string $line): void

@@ -67,6 +67,7 @@ class Slots
             $slotSymbols,
             array_flip(array_rand($slotSymbols, $length))
         ));
+        shuffle($rand);
 
         $this->generate($rand);
 
