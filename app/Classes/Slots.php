@@ -104,14 +104,6 @@ class Slots
     public function isWin(): bool
     {
         foreach ($this->slots as $rowNr => $row) {
-            /*
-            $occurences = [];
-
-            foreach ($row as $colNr => $slot) {
-                $occurences[$slot->code()] = !isset($occurences[$slot->code()]) ? 1 : $occurences[$slot->code()] + 1;
-            }
-            */
-
             $occurences = [];
             $carry = [];
             foreach ($row as $slot) {
