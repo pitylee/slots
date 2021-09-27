@@ -104,17 +104,32 @@ class Slots
     public function isWin(): bool
     {
         foreach ($this->slots as $rowNr => $row) {
+            /*
             $occurences = [];
 
             foreach ($row as $colNr => $slot) {
                 $occurences[$slot->code()] = !isset($occurences[$slot->code()]) ? 1 : $occurences[$slot->code()] + 1;
             }
+            */
+
+            $occurences = [];
+            $carry = [];
+            foreach ($row as $slot) {
+                if ($carry && key($carry) === $slot->code()) {
+                    ++$carry[$slot->code()];
+                } else {
+                    unset($carry);
+                    $carry = [$slot->code() => 1];
+                    $occurences[$slot->code()] =& $carry[$slot->code()];
+                }
+            }
+            unset($carry);
 
             foreach ($this->payouts as $payout => $percentage) {
                 foreach ($occurences as $symbol => $occurence) {
                     if ($occurence === $payout) {
                         $this->win = true;
-                        $this->wins[] = [
+                        $win = [
                             'occurence' => $occurence,
                             'payout' => $payout,
                             'percentage' => $percentage,
@@ -122,6 +137,7 @@ class Slots
                                 return $slot->code();
                             }, $row),
                         ];
+                        $this->wins[] = $win;
                     }
                 }
             }

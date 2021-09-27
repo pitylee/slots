@@ -44,6 +44,7 @@ class SlotsCommand extends Command
         $bet = Bet::factory()->definition();
         $bet['amount'] = 100;
         $this->print(PHP_EOL . '#1 Bet: ' . json_encode($bet, true));
+        $this->printJson($bet);
 
         $slotsRandom = (new Slots(5, 3))->randomize(15);
         $this->print(PHP_EOL . '#2 Slots of 5 columns and 3 rows randomized:');
@@ -74,7 +75,7 @@ class SlotsCommand extends Command
         }
 
         $this->print(PHP_EOL . '#6 Json version:');
-        $this->print(json_encode([
+        $this->printJson([
             'board' => $board,
             'paylines' => array_map(function($win) {
                 return [
@@ -83,7 +84,7 @@ class SlotsCommand extends Command
             }, $wins),
             'bet_amount' => $bet['amount'],
             'total_win' => $winAmount,
-        ], JSON_PRETTY_PRINT));
+        ]);
     }
 
     private function print (string $line): void
@@ -99,6 +100,11 @@ class SlotsCommand extends Command
             }
             echo PHP_EOL;
         }
+    }
+
+    private function printJson (array $json): void
+    {
+        echo json_encode($json, JSON_PRETTY_PRINT) . PHP_EOL;
     }
 
     private function printWin (bool $win): void
