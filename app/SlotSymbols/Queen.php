@@ -1,4 +1,5 @@
 <?php
+
 namespace App\SlotSymbols;
 
 use App\Classes\SlotSymbols;

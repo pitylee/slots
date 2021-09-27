@@ -21,7 +21,7 @@ trait MyOwnFun {
             $this->print('#endRandom');
         }
         $this->print('With ' . $many . ' spins a total amount of ' . $winAmount . ' ' . $bet['currency'] . ' can be won.');
-        $this->print('That is ' . $winAmount/100 . ' EUR.');
+        $this->print('That is ' . $winAmount / 100 . ' EUR.');
 
         $this->print('---- This is for my own fun and probability calculation ----');
     }

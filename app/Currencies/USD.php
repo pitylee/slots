@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Currencies;
 
 use App\Classes\Currencies;

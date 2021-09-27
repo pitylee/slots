@@ -3,8 +3,6 @@
 namespace App\Console\Commands;
 
 use App\Currencies\EUR;
-use App\Models\Bet;
-use Exception;
 use Illuminate\Console\Command;
 use App\Classes\Slots;
 use App\Events\PayoutEvent;
@@ -18,6 +16,7 @@ use App\Traits\MyOwnFun;
  */
 class SlotsInteractiveCommand extends Command
 {
+    use MyOwnFun;
     /**
      * The console command name.
      *
@@ -54,8 +53,7 @@ class SlotsInteractiveCommand extends Command
 
         $winAmount = 0;
         $many = 0;
-        while ($this->confirm('Spin?', true) !== false)
-        {
+        while ($this->confirm('Spin?', true) !== false) {
             $slot = new Slots(5, 5);
             $slotsRandom = $slot->randomize(5 * 5);
             $this->printSlot($slotsRandom);
@@ -68,16 +66,24 @@ class SlotsInteractiveCommand extends Command
         }
 
         $this->print('With ' . $many . ' spins a total amount of ' . $winAmount . ' ' . $bet['currency'] . ' can be won.');
-        $this->print('That is ' . $winAmount/100 . ' EUR.');
+        $this->print('That is ' . $winAmount / 100 . ' EUR.');
 
+        //$this->doFunStuff($bet);
+
+        $this->printMemory();
     }
 
-    private function print (string $line): void
+    private function print(string $line): void
     {
         echo $line . PHP_EOL;
     }
 
-    private function printSlot (array $slots): void
+    private function printJson(array $json): void
+    {
+        echo json_encode($json, JSON_PRETTY_PRINT) . PHP_EOL;
+    }
+
+    private function printSlot(array $slots): void
     {
         foreach ($slots as $row) {
             foreach ($row as $slot) {
@@ -87,15 +93,25 @@ class SlotsInteractiveCommand extends Command
         }
     }
 
-    private function printJson (array $json): void
-    {
-        echo json_encode($json, JSON_PRETTY_PRINT) . PHP_EOL;
-    }
-
-    private function printWin (bool $win): void
+    private function printWin(bool $win): void
     {
         echo 'Win: ' .
             ($win === true ? 'yes' : 'no')
             . '.' . PHP_EOL;
+    }
+
+    private function printMemory(): void
+    {
+        $mem_usage = memory_get_usage();
+
+        if ($mem_usage < 1024) {
+            $memory = $mem_usage . 'bytes';
+        } elseif ($mem_usage < 1048576) {
+            $memory = round($mem_usage / 1024, 2) . 'KB';
+        } else {
+            $memory = round($mem_usage / 1048576, 2) . 'MB';
+        }
+
+        $this->print('The script is now using: ' . $memory . ' of memory.');
     }
 }

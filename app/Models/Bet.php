@@ -9,11 +9,10 @@ class Bet extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
     protected $amount;
     protected $currency;
     protected $client;
-    public $timestamps = false;
-
     /**
      * The attributes that are mass assignable.
      *

@@ -77,7 +77,7 @@ class SlotsCommand extends Command
         $this->print(PHP_EOL . '#6 Json version:');
         $this->printJson([
             'board' => $board,
-            'paylines' => array_map(function($win) {
+            'paylines' => array_map(function ($win) {
                 return [
                     implode(' ', $win['row']) => $win['occurence'],
                 ];
@@ -85,14 +85,21 @@ class SlotsCommand extends Command
             'bet_amount' => $bet['amount'],
             'total_win' => $winAmount,
         ]);
+
+        $this->printMemory();
     }
 
-    private function print (string $line): void
+    private function print(string $line): void
     {
         echo $line . PHP_EOL;
     }
 
-    private function printSlot (array $slots): void
+    private function printJson(array $json): void
+    {
+        echo json_encode($json, JSON_PRETTY_PRINT) . PHP_EOL;
+    }
+
+    private function printSlot(array $slots): void
     {
         foreach ($slots as $row) {
             foreach ($row as $slot) {
@@ -102,15 +109,25 @@ class SlotsCommand extends Command
         }
     }
 
-    private function printJson (array $json): void
-    {
-        echo json_encode($json, JSON_PRETTY_PRINT) . PHP_EOL;
-    }
-
-    private function printWin (bool $win): void
+    private function printWin(bool $win): void
     {
         echo 'Win: ' .
             ($win === true ? 'yes' : 'no')
             . '.' . PHP_EOL;
+    }
+
+    private function printMemory(): void
+    {
+        $mem_usage = memory_get_usage();
+
+        if ($mem_usage < 1024) {
+            $memory = $mem_usage . 'bytes';
+        } elseif ($mem_usage < 1048576) {
+            $memory = round($mem_usage / 1024, 2) . 'KB';
+        } else {
+            $memory = round($mem_usage / 1048576, 2) . 'MB';
+        }
+
+        $this->print('The script is now using: ' . $memory . ' of memory.');
     }
 }
