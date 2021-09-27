@@ -47,7 +47,8 @@ class SlotsInteractiveCommand extends Command
         ];
         $bet['amount'] = $this->ask('What is the amount?', 100);
 
-        $this->print('Bet: ' . json_encode($bet, true));
+        $this->print(PHP_EOL . '#1 Bet: ');
+        $this->printJson($bet);
 
         //
 
@@ -84,6 +85,11 @@ class SlotsInteractiveCommand extends Command
             }
             echo PHP_EOL;
         }
+    }
+
+    private function printJson (array $json): void
+    {
+        echo json_encode($json, JSON_PRETTY_PRINT) . PHP_EOL;
     }
 
     private function printWin (bool $win): void

@@ -1,24 +1,35 @@
-# Lumen PHP Framework
+# Slots game in Lumen PHP Framework
 
-[![Build Status](https://travis-ci.org/laravel/lumen-framework.svg)](https://travis-ci.org/laravel/lumen-framework)
-[![Total Downloads](https://img.shields.io/packagist/dt/laravel/framework)](https://packagist.org/packages/laravel/lumen-framework)
-[![Latest Stable Version](https://img.shields.io/packagist/v/laravel/framework)](https://packagist.org/packages/laravel/lumen-framework)
-[![License](https://img.shields.io/packagist/l/laravel/framework)](https://packagist.org/packages/laravel/lumen-framework)
+## Requirements
 
-Laravel Lumen is a stunningly fast PHP micro-framework for building web applications with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Lumen attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as routing, database abstraction, queueing, and caching.
+None, whatsoever, it is standalone, so you only clone, and run with php console.
 
-## Official Documentation
+**Wait**, that is untrue, it requires:
+ - A computer, with at least [640KB RAM](https://memegenerator.net/instance/49837248/bill-gates-youll-never-need-more-than-640k-ram)
+ - An OS that supports [PHP](https://www.php.net)
+ - A total disk space of 50MB
+ - A console that can run git and php commands (brew, tabby) to the rescue
 
-Documentation for the framework can be found on the [Lumen website](https://lumen.laravel.com/docs).
+## Setup
 
-## Contributing
+Clone this repository via:
+\
+```git clone https://github.com/pitylee/slots.git```
 
-Thank you for considering contributing to Lumen! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Enter the directory of the repo:
+\
+```cd slots```
+\
+_Or wherever you unpacked it_
 
-## Security Vulnerabilities
+## Usage
 
-If you discover a security vulnerability within Lumen, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
+You can use the App via command line:
+\
+```php artisan slots:generate```
+\
+\
+Or the interactive slots game with the command:
+\
+```php artisan slots:interactive```
 
-## License
-
-The Lumen framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).

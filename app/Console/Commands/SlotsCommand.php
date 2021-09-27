@@ -43,7 +43,7 @@ class SlotsCommand extends Command
     {
         $bet = Bet::factory()->definition();
         $bet['amount'] = 100;
-        $this->print(PHP_EOL . '#1 Bet: ' . json_encode($bet, true));
+        $this->print(PHP_EOL . '#1 Bet: ');
         $this->printJson($bet);
 
         $slotsRandom = (new Slots(5, 3))->randomize(15);
