@@ -44,7 +44,7 @@ class SlotsInteractiveCommand extends Command
             'currency' => (new EUR())->symbol(),
             'client' => 'whoami',
         ];
-        $bet['amount'] = $this->ask('What is the amount?', 100);
+        $bet['amount'] = intval($this->ask('What is the amount?', 100));
 
         $this->print(PHP_EOL . '#1 Bet: ');
         $this->printJson($bet);

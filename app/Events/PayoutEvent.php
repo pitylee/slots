@@ -16,7 +16,9 @@ class PayoutEvent extends Event
         $this->amount = 0;
 
         foreach ($wins as $win) {
-            if (is_numeric($win['percentage']) && $win['percentage'] > 0) {
+            if (is_numeric($win['percentage']) && $win['percentage'] > 0 &&
+                is_numeric($bet['amount']) && $bet['amount'] > 0
+            ) {
                 $this->amount += ($bet['amount'] * $win['percentage']);
             }
         }
